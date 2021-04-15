@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
 
-    private  static final Logger log = LoggerFactory.getLogger(Main.class);
+    private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     private static final String CONFIG_LOCATION = "beans.xml";
 
@@ -20,7 +20,14 @@ public class Main {
 
         NumberGenerator numberGenerator
                 = context.getBean("numberGenerator", NumberGenerator.class);
-        
 
+        // call method next() to get a random number
+        int number = numberGenerator.next();
+
+        // log generated number
+        log.info("number = {}", number);
+
+        // close context (container
+        context.close();
     }
 }

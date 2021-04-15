@@ -6,6 +6,7 @@
     </appender>
 
     <logger name="pl.dele" level="DEBUG"/>
+    <logger name="org.springframework" level="TRACE"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
