@@ -55,7 +55,6 @@ public class ConsoleNumberGuess{
                     scanner.close();
                     break;
                 }
-
                 game.reset();
             }
         }

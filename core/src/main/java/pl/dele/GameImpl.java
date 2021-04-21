@@ -85,6 +85,11 @@ public class GameImpl implements Game {
     }
 
     @Override
+    public int getGuessCount() {
+        return remainingGuesses;
+    }
+
+    @Override
     public void check() {
         checkValidNumberRange();
 
