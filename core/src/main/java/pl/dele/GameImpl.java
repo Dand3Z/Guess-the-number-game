@@ -16,7 +16,8 @@ public class GameImpl implements Game {
     @Autowired
     private NumberGenerator numberGenerator;
     // how many times the player can guess the number before the game is over
-    private int guessCount = 10;
+    @Autowired
+    private int guessCount;
     // value of the randomly generated number for the player to guess
     private int number;
     // the player's guess
@@ -86,7 +87,7 @@ public class GameImpl implements Game {
 
     @Override
     public int getGuessCount() {
-        return remainingGuesses;
+        return guessCount;
     }
 
     @Override

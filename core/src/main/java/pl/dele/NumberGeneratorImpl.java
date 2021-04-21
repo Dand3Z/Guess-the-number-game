@@ -1,5 +1,7 @@
 package pl.dele;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Random;
 
 public class NumberGeneratorImpl implements NumberGenerator {
@@ -10,7 +12,8 @@ public class NumberGeneratorImpl implements NumberGenerator {
      */
     private final Random random = new Random();
 
-    private int maxNumber = 100;
+    @Autowired
+    private int maxNumber;
 
     // == public methods ==
     /**
