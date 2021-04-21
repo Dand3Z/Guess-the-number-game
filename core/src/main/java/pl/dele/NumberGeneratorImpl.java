@@ -1,7 +1,10 @@
 package pl.dele;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Random;
 
+@Component("generator")
 public class NumberGeneratorImpl implements NumberGenerator {
 
     // == fields ==
@@ -13,7 +16,6 @@ public class NumberGeneratorImpl implements NumberGenerator {
     private int maxNumber = 100;
 
     // == public methods ==
-
     /**
      * Generate next value
      * @return
