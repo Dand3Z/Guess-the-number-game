@@ -7,8 +7,6 @@
     <bean id="numberGenerator" class="pl.dele.NumberGeneratorImpl"/>
 
     <bean id="game" class="pl.dele.GameImpl">
-        <constructor-arg ref="numberGenerator"/>
+        <property name="numberGenerator" ref="numberGenerator"/>
     </bean>
-
-
 </beans>
