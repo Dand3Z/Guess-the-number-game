@@ -3,6 +3,9 @@ package pl.dele;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class GameImpl implements Game {
 
     // == constants ==
@@ -24,14 +27,11 @@ public class GameImpl implements Game {
     private int remainingGuesses;
     private boolean validNumberRange = true;
 
-    // == public methods ==
-    public void setNumberGenerator(NumberGenerator numberGenerator){
-        this.numberGenerator = numberGenerator;
-    }
-
+    // == init ==
     /**
      * reset / restart game
      */
+    @PostConstruct
     @Override
     public void reset() {
         // set the default values
@@ -44,6 +44,16 @@ public class GameImpl implements Game {
         number = numberGenerator.next();
         // print that number in our log
         log.debug("the number is {}", number);
+    }
+
+    @PreDestroy
+    public void preDestroy(){
+        log.info("in Game preDestroy()");
+    }
+
+    // == public methods ==
+    public void setNumberGenerator(NumberGenerator numberGenerator){
+        this.numberGenerator = numberGenerator;
     }
 
     @Override
