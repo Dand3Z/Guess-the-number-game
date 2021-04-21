@@ -3,20 +3,22 @@ package pl.dele;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+@Component
 public class GameImpl implements Game {
 
     // == constants ==
     private static final Logger log = LoggerFactory.getLogger(Game.class);
 
     // == fields
-    @Autowired
-    private NumberGenerator numberGenerator;
+    private final NumberGenerator numberGenerator;
+
     // how many times the player can guess the number before the game is over
-    private int guessCount = 10;
+    private final int guessCount;
     // value of the randomly generated number for the player to guess
     private int number;
     // the player's guess
@@ -29,6 +31,14 @@ public class GameImpl implements Game {
     private int remainingGuesses;
     private boolean validNumberRange = true;
 
+    // == constructors ==
+    @Autowired
+    GameImpl(NumberGenerator numberGenerator, @GuessCount int guessCount) {
+        this.numberGenerator = numberGenerator;
+        this.guessCount = guessCount;
+    }
+
+
     // == init ==
     /**
      * reset / restart game
@@ -36,8 +46,7 @@ public class GameImpl implements Game {
     @PostConstruct
     @Override
     public void reset() {
-        // set the default values
-        smallest = 0;
+        smallest = numberGenerator.getMinNumber();
         guess = 0;
         remainingGuesses = guessCount;
         biggest = numberGenerator.getMaxNumber();
@@ -82,6 +91,11 @@ public class GameImpl implements Game {
     @Override
     public int getRemainingGuesses() {
         return remainingGuesses;
+    }
+
+    @Override
+    public int getGuessCount() {
+        return guessCount;
     }
 
     @Override
