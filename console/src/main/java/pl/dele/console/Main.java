@@ -1,9 +1,13 @@
-package pl.dele;
+package pl.dele.console;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import pl.dele.AppConfig;
+import pl.dele.Game;
+import pl.dele.MessageGenerator;
+import pl.dele.NumberGenerator;
 
 public class Main {
 
