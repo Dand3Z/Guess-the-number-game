@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.dele.service.GameService;
 import pl.dele.util.AttributeNames;
-import pl.dele.util.GamesMappings;
+import pl.dele.util.GameMappings;
 import pl.dele.util.ViewNames;
 
 @Slf4j
@@ -26,7 +26,7 @@ public class GameController {
     }
 
     // == request methods ==
-    @GetMapping(GamesMappings.PLAY)
+    @GetMapping(GameMappings.PLAY)
     public String play(Model model){
         model.addAttribute(AttributeNames.MAIN_MESSAGE, gameService.getMainMessage());
         model.addAttribute(AttributeNames.RESULT_MESSAGE, gameService.getResultMessage());
@@ -37,10 +37,10 @@ public class GameController {
     }
 
     // Submit button
-    @PostMapping(GamesMappings.PLAY)
+    @PostMapping(GameMappings.PLAY)
     public String processMessage(@RequestParam int guess){
         log.info("guess = {}", guess);
         gameService.checkGuess(guess);
-        return GamesMappings.REDIRECT_PLAY;
+        return GameMappings.REDIRECT_PLAY;
     }
 }
