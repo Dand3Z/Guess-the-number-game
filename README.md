@@ -6,7 +6,7 @@ The project consists of three modules:
 - core -> The logic behind the game
 - web -> Web layer of the application. Run the main method in the WebMain class, then go to http://localhost:8080/ in your browser. 
 
-The web version of the game supports 3 language versions:
+The web version of the game supports 3 languages:
 - English (en)
 - German (de)
 - Spanish (es)
